@@ -1,0 +1,27 @@
+.authorize__modal-content {
+  background-color: white;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+
+  h1 {
+    text-align: center;
+  }
+
+  input {
+    width: calc(100% - 20px);
+  }
+
+  button {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin: 10px;
+  }
+
+  p {
+    color: red;
+    text-align: center;
+  }
+}

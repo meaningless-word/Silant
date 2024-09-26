@@ -1,0 +1,10 @@
+article {
+  max-width: 1200px;
+  width: 100%;
+  height: calc(100vh - 70px);
+  margin: 70px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+}

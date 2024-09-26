@@ -1,0 +1,101 @@
+* {
+  box-sizing: border-box;
+}
+
+*::-webkit-scrollbar {
+  width: 8px; /* ширина scrollbar */
+  height: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: white; /* цвет дорожки */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #eee; /* цвет плашки */
+  border-radius: 20px; /* закругления плашки */
+  border: none; /* padding вокруг плашки */
+}
+
+.display-linebreak {
+  white-space: pre-line;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  font-family: PT-Astra-Sans_Regular, sans-serif;
+  height: 100vh;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+}
+
+:root {
+  --main-blue: #163e6c;
+  --main-red: #d20a11;
+  --main-beige: #ebe6d6;
+}
+
+button {
+  cursor: pointer;
+  font-family: PT-Astra-Sans_Bold, sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  color: #fff;
+  border: 0;
+  padding: 10px 30px;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+}
+
+button:focus {
+  outline: none;
+}
+
+.red-back {
+  background-color: var(--main-red);
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 101;
+}
+
+input {
+  padding: 10px;
+  margin: 10px;
+  border: none;
+  border-bottom: 1px solid #ccc;
+}
+
+input:focus {
+  outline: none;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-center {
+  text-align: center;
+}

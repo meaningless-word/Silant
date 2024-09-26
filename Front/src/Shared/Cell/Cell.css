@@ -1,0 +1,13 @@
+.cell-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+
+  div {
+    width: 100%;
+    padding: 5px;
+    text-align: center;
+  }
+}

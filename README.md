@@ -1,70 +1,93 @@
-# Getting Started with Create React App
+# Задание
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Разработать сервис, в котором можно было бы отслеживать состояние каждой купленной машины и всех её комплектующих. Добавить возможность отслеживать, как идёт обслуживание техники.
 
-## Available Scripts
+# Описание проекта
 
-In the project directory, you can run:
+Проект разбит на две части: Back и Front. Back реализован на Django & REST Framework, Front - на React.
 
-### `npm start`
+# Установка и запуск проекта
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+1. Клонирование репозитория
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+   > Выполнить команду в терминале
 
-### `npm test`
+   ```
+   git clone https://github.com/meaningless-word/Silant.git
+   ```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. Подготовка и запуск Backend-а
 
-### `npm run build`
+   - Перейти в папку Back
+     ```
+     cd Silant\Back
+     ```
+   - Создать виртуальное окружение
+     ```
+     python -m venv .venv
+     ```
+   - Активировать виртуальное окружение
+     ```
+     .venv\scripts\activate
+     ```
+   - Обновить пакетный менеджер
+     ```
+     python -m pip install --upgrade pip
+     ```
+   - Установить зависимости
+     ```
+     pip inastall -r requirements.txt
+     ```
+   - Выполнить миграции (на случай отсутствия базы данных в репозитории)
+     ```
+     python manage.py migrate
+     ```
+   - Запустить backend проекта
+     ```
+     python manage.py runserver
+     ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+3. Подготовка и запуск Frontend-а
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+   - Перейти в папку Front
+     ```
+     cd ..\Front
+     ```
+   - Установить зависимости
+     ```
+     npm install
+     ```
+   - Запустить frontend проекта в режиме разработки
+     ```
+     npm run start
+     ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+4. Запуск приложения
 
-### `npm run eject`
+   приложение откроется автоматически в окне браузера по-умолчанию, либо же можно [перейти по адресу](http://localhost:3000) http://localhost:3000/
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+---
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# Содержимое проекта
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Помимо веб-приложения в проекте содержатся:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Описание REST API
 
-## Learn More
+при помощи Swagger
+![Swagger](https://github.com/meaningless-word/Illustrates/blob/master/Screenshot%202024-09-26%20155558.png)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Админ-панель
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+доступна администратору по адресу http://127.0.0.1:8000/admin/
+через которую предоставляется возможность редактировать информацию в таблицах, создавать пользователей, распределять роли.
+Для входа зарегистрирован пользователь **_admin_** с паролем _admin_
+![Админ-панель](https://github.com/meaningless-word/Illustrates/blob/master/Screenshot%202024-09-26%20180108.png)
 
-### Code Splitting
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+# Сайт
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Неавторизованному пользователю доступен просмотр всех единиц техники, реализованных заводом. Детализация ограничена серийными номерами и моделями оборудования. Доступна фильтрация по моделям компонентов, а так же по заводскому номеру техники.
+![](https://github.com/meaningless-word/Illustrates/blob/master/Screenshot%202024-09-26%20180803.png)
+По нажатии на стоку таблицы открывается расширенное представление, содержащее детальное описание из каталога по каждому из узлов.

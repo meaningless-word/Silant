@@ -18,16 +18,29 @@
 }
 
 .display-linebreak {
+  /* переносы пр \n в тексте */
   white-space: pre-line;
 }
 
-html,
-body,
-#root {
-  margin: 0;
-  padding: 0;
-  font-family: PT-Astra-Sans_Regular, sans-serif;
-  height: 100vh;
+@media screen and (min-width: 1200px) and (orientation: landscape) {
+  html,
+  body,
+  #root {
+    margin: 0;
+    padding: 0;
+    font-family: PT-Astra-Sans_Regular, sans-serif;
+    height: 100vh;
+  }
+}
+
+@media screen and (max-width: 1199px) {
+  html,
+  body,
+  #root {
+    margin: 0;
+    padding: 0;
+    font-family: PT-Astra-Sans_Regular, sans-serif;
+  }
 }
 
 #root {

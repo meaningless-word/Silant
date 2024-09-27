@@ -112,3 +112,11 @@ input:focus {
 .text-center {
   text-align: center;
 }
+
+.CRUD {
+  width: 28px;
+}
+
+.CRUD:hover {
+  transform: rotateX(-19deg) rotateY(19deg);
+}

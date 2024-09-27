@@ -6,6 +6,7 @@ import { useAuth } from "../../../../hook/useAuth.jsx";
 import FilterPanel from "../../FilterPanel/FilterPanel.jsx";
 import Cell from "../../../../Shared/Cell/Cell.jsx";
 import CommonDetails from "./Details/CommonDetails.jsx";
+import DialogCRUD from "../../DialogCRUD/DialogCRUD.jsx";
 import "./Common.css";
 
 const Common = () => {
@@ -23,6 +24,8 @@ const Common = () => {
     lda: "",
     sta: "",
   });
+
+  const [CRUDme, setCRUDme] = useState();
 
   const fetchData = async () => {
     try {
@@ -54,6 +57,14 @@ const Common = () => {
     setDetailMe(element.id.split("-")[1]);
   };
 
+  const handlerCRUD = (e) => {
+    e.stopPropagation();
+    setCRUDme({
+      table: "machines",
+      action: e.target.getAttribute("id"),
+    });
+  };
+
   return (
     <>
       <FilterPanel filter={filter} setFilter={setFilter} />
@@ -61,6 +72,11 @@ const Common = () => {
         <table className="client-info__table">
           <thead>
             <tr>
+              {token.user.role === "m" ? (
+                <th style={{ width: "36px", padding: "0px" }}>
+                  <img id={"C"} className="CRUD" src={"./images/C.png"} alt="C" onClick={handlerCRUD} />
+                </th>
+              ) : null}
               <th style={{ width: "120px" }}></th>
               <th style={{ width: "150px" }}>техника</th>
               <th style={{ width: "150px" }}>двигатель</th>
@@ -79,6 +95,12 @@ const Common = () => {
           <tbody>
             {data.map((machine) => (
               <tr id={"machine-" + machine.id} key={machine.id} onClick={handlerSelect}>
+                {token.user.role === "m" ? (
+                  <th style={{ padding: "0px" }}>
+                    <img id={"U-" + machine.id} className="CRUD" src={"./images/U.png"} alt="U" onClick={handlerCRUD} />
+                    <img id={"D-" + machine.id} className="CRUD" src={"./images/D.png"} alt="D" onClick={handlerCRUD} />
+                  </th>
+                ) : null}
                 <th>
                   <Cell model="модель" serial="серийный №" />
                 </th>
@@ -113,6 +135,7 @@ const Common = () => {
       </div>
       {isEmpty && <h3>Данных о машине с таким заводским номером нет в системе.</h3>}
       {detailMe && <CommonDetails id={detailMe} setId={setDetailMe} />}
+      {CRUDme && <DialogCRUD param={CRUDme} setParam={setCRUDme} />}
     </>
   );
 };
